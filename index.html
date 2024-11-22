@@ -17,6 +17,7 @@
         body {
             background-color: #121212;
             color: #e0e0e0;
+            overflow-x: hidden;
         }
 
         /* Navigation Bar */
@@ -26,13 +27,14 @@
             align-items: center;
             padding: 20px 50px;
             background: #1e1e1e;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            animation: slideInNav 1s ease-out; /* Navigation slide-in */
         }
 
         nav .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #f8c74c;
+            animation: fadeInUp 1s ease-out;
         }
 
         nav ul {
@@ -42,6 +44,7 @@
 
         nav ul li {
             margin-left: 20px;
+            animation: fadeInUp 1s ease-out;
         }
 
         nav ul li a {
@@ -57,30 +60,52 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(34, 34, 34, 0.8)),
-            url('https://source.unsplash.com/1920x1080/?food') center/cover no-repeat;
-            color: #f8c74c;
-            text-align: center;
-            padding: 100px 20px;
-            height:53vh;
+            position: relative;
+            overflow: hidden;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+        }
+
+        .carousel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: #f8c74c;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
         }
 
-        .hero h1 {
+        .slide h1 {
             font-size: 3rem;
             margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
         }
 
-        .hero p {
+        .slide p {
             font-size: 1.5rem;
             margin-bottom: 40px;
             color: #e0e0e0;
+            animation: fadeInUp 1.2s ease-in-out;
         }
 
-        .hero a {
+        .slide a {
             padding: 15px 30px;
             font-size: 1rem;
             color: #121212;
@@ -89,11 +114,13 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
+            animation: fadeInUp 1.4s ease-in-out;
         }
 
-        .hero a:hover {
+        .slide a:hover {
             background: #ffae42;
+            transform: scale(1.05);
         }
 
         /* Features Section */
@@ -104,6 +131,7 @@
             justify-content: center;
             padding: 50px 20px;
             background: #1e1e1e;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .feature {
@@ -115,6 +143,7 @@
             width: 300px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .feature:hover {
@@ -148,6 +177,40 @@
         footer p {
             font-size: 0.9rem;
         }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInNav {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+
     </style>
 </head>
 <body>
@@ -155,7 +218,7 @@
     <nav>
         <div class="logo">Foodify</div>
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -164,20 +227,34 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Welcome to Foodify</h1>
-        <p>Your favorite meals, delivered fresh and fast.</p>
-        <a href="menu.html">Explore Our Menu</a>
+        <div class="carousel">
+            <div class="slide active" style="background-image: url('https://source.unsplash.com/1920x1080/?pizza');">
+                <h1>Welcome to Foodify</h1>
+                <p>Your favorite meals, delivered fresh and fast.</p>
+                <a href="menu.html">Explore Our Menu</a>
+            </div>
+            <div class="slide" style="background-image: url('https://source.unsplash.com/1920x1080/?burger');">
+                <h1>Juicy Burgers</h1>
+                <p>Grilled to perfection with fresh toppings.</p>
+                <a href="#">Order Now</a>
+            </div>
+            <div class="slide" style="background-image: url('https://source.unsplash.com/1920x1080/?salad');">
+                <h1>Healthy Salads</h1>
+                <p>Fresh greens and vibrant veggies.</p>
+                <a href="#">Order Now</a>
+            </div>
+        </div>
     </section>
 
     <!-- Features Section -->
     <section class="features">
         <div class="feature">
-            <img src="https://cdn.pixabay.com/photo/2021/01/16/09/05/meal-5921491_1280.jpg" alt="Burger">
+            <img src="https://cdn.pixabay.com/photo/2021/01/16/09/05/meal-5921491_1280.jpg" alt="Feature 1">
             <h3>Delicious Meals</h3>
             <p>Enjoy a variety of meals crafted by our expert chefs.</p>
         </div>
         <div class="feature">
-            <img src="https://cdn.pixabay.com/photo/2022/06/07/21/10/tofu-7249304_960_720.jpg" alt="Fast Delivery">
+            <img src="https://cdn.pixabay.com/photo/2022/06/07/21/10/tofu-7249304_960_720.jpg" alt="Feature 2">
             <h3>Fast Delivery</h3>
             <p>Get your order delivered to your doorstep in record time.</p>
         </div>
@@ -197,5 +274,18 @@
     <footer>
         <p>© 2024 Foodify. All rights reserved.</p>
     </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showNextSlide() {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextSlide, 5000);  // Change slide every 5 seconds
+    </script>
 </body>
 </html>
