@@ -126,6 +126,48 @@
             background: #ffae42;
             transform: scale(1.05);
         }
+        .testimonials {
+            padding: 50px;
+            text-align: center;
+            background: #1e1e1e;
+        }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            color: #f8c74c;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            width: 300px;
+            background: #222;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-card p {
+            font-size: 1rem;
+            color: #999696;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card .customer {
+            font-weight: bold;
+            color: #f8c74c;
+        }
 
         /* Features Section */
         .features {
@@ -290,6 +332,24 @@
             <div class="feature-content">
                 <h3>Healthy Options</h3>
                 <p>Choose from a variety of healthy and nutritious meals.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"Foodify has completely changed the way I eat. The meals are so fresh and delicious!"</p>
+                <p class="customer"></p>
+            </div>
+            <div class="testimonial-card">
+                <p>"Fast delivery and amazing options. I love how easy it is to eat healthy with Foodify!"</p>
+                <p class="customer"></p>
+            </div>
+            <div class="testimonial-card">
+                <p>"The variety of meals is fantastic. There's always something new to try!"</p>
+                <p class="customer"></p>
             </div>
         </div>
     </section>
