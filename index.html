@@ -15,7 +15,7 @@
 
         /* Body */
         body {
-            background-color: #121212;
+            background: linear-gradient(135deg, #121212, #1e1e1e);
             color: #e0e0e0;
             overflow-x: hidden;
         }
@@ -26,8 +26,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: #1e1e1e;
-            animation: slideInNav 1s ease-out; /* Navigation slide-in */
+            background: linear-gradient(90deg, #1e1e1e, #333333);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            animation: slideInNav 1s ease-out;
         }
 
         nav .logo {
@@ -51,11 +52,14 @@
             color: #e0e0e0;
             text-decoration: none;
             font-size: 1rem;
-            transition: color 0.3s;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: #f8c74c;
+            color: #121212;
+            background: #f8c74c;
         }
 
         /* Hero Section */
@@ -87,9 +91,14 @@
             background-size: cover;
             background-position: center;
             text-align: center;
-            color: #f8c74c;
+            color: #9f750b;
             opacity: 0;
             animation: fadeIn 1.5s ease forwards;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
         }
 
         .slide h1 {
@@ -101,7 +110,7 @@
         .slide p {
             font-size: 1.5rem;
             margin-bottom: 40px;
-            color: #e0e0e0;
+            color: #383838;
             animation: fadeInUp 1.2s ease-in-out;
         }
 
@@ -126,44 +135,78 @@
         /* Features Section */
         .features {
             display: flex;
+            justify-content: space-around;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: center;
-            padding: 50px 20px;
+            padding: 50px;
             background: #1e1e1e;
-            animation: fadeIn 1.5s ease-out;
+            border-top: 0px solid #f8c74c;
         }
 
-        .feature {
-            background: #2c2c2c;
-            color: #e0e0e0;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
+        .feature-card {
             width: 300px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease-in-out;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            background: #222;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .feature img {
-            width: 100px;
-            margin-bottom: 15px;
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 0px solid #f8c74c;
         }
 
-        .feature h3 {
+        .feature-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.4rem;
             margin-bottom: 10px;
-            font-size: 1.2rem;
             color: #f8c74c;
         }
 
-        .feature p {
-            font-size: 0.9rem;
+        p {
+            font-size: 1rem;
+            color: #999696;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .feature-card:nth-child(4) {
+            animation-delay: 0.8s;
         }
 
         /* Footer */
@@ -172,6 +215,7 @@
             background: #121212;
             text-align: center;
             color: #757575;
+            border-top: 0px solid #f8c74c;
         }
 
         footer p {
@@ -190,27 +234,14 @@
             }
         }
 
-        @keyframes fadeInUp {
+        @keyframes slideInNav {
             from {
-                opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(-100%);
             }
             to {
-                opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        @keyframes slideInNav {
-            from {
-                transform: translateX(-100%);
-            }
-            to {
-                transform: translateX(0);
-            }
-        }
-
-
     </style>
 </head>
 <body>
@@ -228,45 +259,43 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="carousel">
-            <div class="slide active" style="background-image: url('https://source.unsplash.com/1920x1080/?pizza');">
+            <div class="slide active" style="background-image: url('https://cdn.pixabay.com/photo/2021/02/06/19/29/pancakes-5989136_1280.jpg');">
                 <h1>Welcome to Foodify</h1>
                 <p>Your favorite meals, delivered fresh and fast.</p>
                 <a href="menu.html">Explore Our Menu</a>
-            </div>
-            <div class="slide" style="background-image: url('https://source.unsplash.com/1920x1080/?burger');">
-                <h1>Juicy Burgers</h1>
-                <p>Grilled to perfection with fresh toppings.</p>
-                <a href="#">Order Now</a>
-            </div>
-            <div class="slide" style="background-image: url('https://source.unsplash.com/1920x1080/?salad');">
-                <h1>Healthy Salads</h1>
-                <p>Fresh greens and vibrant veggies.</p>
-                <a href="#">Order Now</a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features">
-        <div class="feature">
+        <div class="feature-card">
             <img src="https://cdn.pixabay.com/photo/2021/01/16/09/05/meal-5921491_1280.jpg" alt="Feature 1">
-            <h3>Delicious Meals</h3>
-            <p>Enjoy a variety of meals crafted by our expert chefs.</p>
+            <div class="feature-content">
+                <h3>Delicious Meals</h3>
+                <p>Enjoy a variety of meals crafted by our expert chefs.</p>
+            </div>
         </div>
-        <div class="feature">
+        <div class="feature-card">
             <img src="https://cdn.pixabay.com/photo/2022/06/07/21/10/tofu-7249304_960_720.jpg" alt="Feature 2">
-            <h3>Fast Delivery</h3>
-            <p>Get your order delivered to your doorstep in record time.</p>
+            <div class="feature-content">
+                <h3>Fast Delivery</h3>
+                <p>Get your order delivered to your doorstep in record time.</p>
+            </div>
         </div>
-        <div class="feature">
-            <img src="https://cdn.pixabay.com/photo/2017/06/06/08/42/chafing-dish-2376596_960_720.jpg" alt="Fresh Ingredients">
-            <h3>Fresh Ingredients</h3>
-            <p>Only the finest, freshest ingredients in every bite.</p>
+        <div class="feature-card">
+            <img src="https://cdn.pixabay.com/photo/2017/06/06/08/42/chafing-dish-2376596_960_720.jpg" alt="Feature 3">
+            <div class="feature-content">
+                <h3>Fresh Ingredients</h3>
+                <p>Only the finest, freshest ingredients in every bite.</p>
+            </div>
         </div>
-        <div class="feature">
-            <img src="https://cdn.pixabay.com/photo/2016/11/21/11/57/bowl-1844894_960_720.jpg" alt="Healthy Options">
-            <h3>Healthy Options</h3>
-            <p>Choose from a variety of healthy and nutritious meals.</p>
+        <div class="feature-card">
+            <img src="https://cdn.pixabay.com/photo/2016/11/21/11/57/bowl-1844894_960_720.jpg" alt="Feature 4">
+            <div class="feature-content">
+                <h3>Healthy Options</h3>
+                <p>Choose from a variety of healthy and nutritious meals.</p>
+            </div>
         </div>
     </section>
 
