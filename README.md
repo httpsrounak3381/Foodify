@@ -1,1 +1,1 @@
-https://foodiify.netlify.app/
+https://foodiify.netlify.app
