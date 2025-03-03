@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Foodify</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body */
+        body {
+            background: linear-gradient(135deg, #121212, #1e1e1e);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: #1e1e1e;
+            animation: slideInNav 1s ease-out; /* Navigation slide-in */
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f8c74c;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f8c74c;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 65vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+        }
+
+        .carousel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: #f8c74c;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .slide h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .slide p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: #383838;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+
+        .slide a {
+            padding: 15px 30px;
+            font-size: 1rem;
+            color: #121212;
+            background: #f8c74c;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            animation: fadeInUp 1.4s ease-in-out;
+        }
+
+        .slide a:hover {
+            background: #ffae42;
+            transform: scale(1.05);
+        }
+        .testimonials {
+            padding: 50px;
+            text-align: center;
+            background: #1e1e1e;
+        }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            color: #f8c74c;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            width: 300px;
+            background: #222;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-card p {
+            font-size: 1rem;
+            color: #999696;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card .customer {
+            font-weight: bold;
+            color: #f8c74c;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 50px;
+            background: #1e1e1e;
+            border-top: 0px solid #f8c74c;
+        }
+
+        .feature-card {
+            width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+            background: #222;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 0px solid #f8c74c;
+        }
+
+        .feature-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #f8c74c;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #999696;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .feature-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            background: #121212;
+            text-align: center;
+            color: #757575;
+            border-top: 0px solid #f8c74c;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInNav {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Foodify</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="carousel">
+            <div class="slide active" style="background-image: url('https://cdn.pixabay.com/photo/2018/07/20/14/05/tropical-3550746_960_720.jpg');">
+                <h1>Welcome to Foodify</h1>
+                <p>Your favorite meals, delivered fresh and fast.</p>
+                <a href="menu.html">Explore Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <img src="https://cdn.pixabay.com/photo/2021/01/16/09/05/meal-5921491_1280.jpg" alt="Feature 1">
+            <div class="feature-content">
+                <h3>Delicious Meals</h3>
+                <p>Enjoy a variety of meals crafted by our expert chefs.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <img src="https://cdn.pixabay.com/photo/2022/06/07/21/10/tofu-7249304_960_720.jpg" alt="Feature 2">
+            <div class="feature-content">
+                <h3>Fast Delivery</h3>
+                <p>Get your order delivered to your doorstep in record time.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <img src="https://cdn.pixabay.com/photo/2017/06/06/08/42/chafing-dish-2376596_960_720.jpg" alt="Feature 3">
+            <div class="feature-content">
+                <h3>Fresh Ingredients</h3>
+                <p>Only the finest, freshest ingredients in every bite.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <img src="https://cdn.pixabay.com/photo/2016/11/21/11/57/bowl-1844894_960_720.jpg" alt="Feature 4">
+            <div class="feature-content">
+                <h3>Healthy Options</h3>
+                <p>Choose from a variety of healthy and nutritious meals.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"Foodify has completely changed the way I eat. The meals are so fresh and delicious!"</p>
+                <p class="customer"></p>
+            </div>
+            <div class="testimonial-card">
+                <p>"Fast delivery and amazing options. I love how easy it is to eat healthy with Foodify!"</p>
+                <p class="customer"></p>
+            </div>
+            <div class="testimonial-card">
+                <p>"The variety of meals is fantastic. There's always something new to try!"</p>
+                <p class="customer"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Foodify. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        function showNextSlide() {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextSlide, 5000);  // Change slide every 5 seconds
+    </script>
+</body>
+</html>

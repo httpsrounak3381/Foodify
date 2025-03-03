@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Foodify</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .checkout-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #f8c74c;
+            margin-bottom: 15px;
+        }
+
+        .order-summary {
+            text-align: left;
+            background: #252525;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .order-summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .order-summary ul li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        .total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #f8c74c;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #f8c74c;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            color: #121212;
+            background: #f8c74c;
+            border-radius: 25px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .place-order-btn:hover {
+            background: #ffae42;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <ul id="order-items">
+                <li>No items in cart.</li>
+            </ul>
+            <div class="total">Total: $0.00</div>
+        </div>
+
+        <form id="checkout-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="address">Delivery Address</label>
+            <textarea id="address" rows="3" required></textarea>
+
+            <button type="submit" class="place-order-btn">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        // Retrieve cart data from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const orderItemsList = document.getElementById('order-items');
+        const totalElement = document.querySelector('.total');
+
+        function displayOrder() {
+            orderItemsList.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                orderItemsList.innerHTML = '<li>No items in cart.</li>';
+                totalElement.innerHTML = 'Total: $0.00';
+                return;
+            }
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - <strong>$${item.price}</strong>`;
+                orderItemsList.appendChild(li);
+                total += parseFloat(item.price);
+            });
+
+            totalElement.innerHTML = `Total: $${total.toFixed(2)}`;
+        }
+
+        displayOrder();
+
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+
+            if (!name || !email || !address) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            // Simulate order placement
+            alert(`Thank you, ${name}! Your order has been placed.`);
+
+            // Clear cart and redirect
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html'; // Redirect to home after order
+        });
+    </script>
+
+</body>
+</html>

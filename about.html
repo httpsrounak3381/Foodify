@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Foodify</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body Style */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: #1e1e1e;
+            animation: slideInNav 1s ease-out; /* Navigation slide-in */
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f8c74c;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f8c74c;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .about-section h1 {
+            font-size: 2.5rem;
+            color: #f8c74c;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .mission {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+
+        .mission h2 {
+            color: #f8c74c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .mission p {
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+
+        .team-member {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem;
+            color: #f8c74c;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #121212;
+            color: #757575;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 2.5s forwards;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInNav {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Foodify</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h1>About Us</h1>
+        <p>Welcome to Foodify! We're passionate about delivering delicious meals right to your doorstep. Our mission is to bring people together through great food and exceptional service.</p>
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>At Foodify, we believe in creating unforgettable dining experiences. From sourcing the freshest ingredients to crafting mouth-watering recipes, our goal is to make every meal a delight.</p>
+        </div>
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="img/img1.jpg" alt="Founder">
+                <h3>Rounak Pradhan</h3>
+                <p>Founder & CEO</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Foodify. All rights reserved.</p>
+    </footer>
+</body>
+</html>
